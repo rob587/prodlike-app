@@ -16,7 +16,6 @@ export default function Index() {
               styles.card,
               pressed && styles.cardPressed,
             ]}
-            className="flex-row items-center justify-between p-4 mb-3 rounded-xl bg-gray-100"
             onPress={() =>
               router.push(
                 `/dettaglio?id=${item.id}&nome=${item.nome}&prezzo=${item.prezzo}&categoria=${item.categoria}`,
