@@ -1,50 +1,37 @@
-# Welcome to your Expo app 👋
+Esercizio — App Catalogo Prodotti
+Crea un'app con 3 tab e navigazione verso una schermata di dettaglio.
+Struttura:
+app/
+\_layout.tsx
+dettaglio.tsx ← schermata dettaglio (fuori dalle tabs)
+(tabs)/
+\_layout.tsx
+index.tsx ← tab Prodotti
+preferiti.tsx ← tab Preferiti
+profilo.tsx ← tab Profilo
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Tab Prodotti (index.tsx)
 
-## Get started
+Mostra una lista di almeno 5 prodotti con FlatList
+Ogni prodotto ha nome, prezzo e categoria
+Ogni prodotto è cliccabile — porta alla schermata dettaglio passando nome, prezzo e categoria
 
-1. Install dependencies
+Schermata Dettaglio (dettaglio.tsx)
 
-   ```bash
-   npm install
-   ```
+Mostra nome, prezzo e categoria del prodotto selezionato
+Ha un bottone "Torna indietro" che usa router.back()
+Niente tab bar visibile
 
-2. Start the app
+Tab Preferiti (preferiti.tsx)
 
-   ```bash
-   npx expo start
-   ```
+Per ora mostra solo una schermata con scritto "Nessun preferito ancora"
 
-In the output, you'll find options to open the app in a
+Tab Profilo (profilo.tsx)
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Mostra una card con nome, ruolo e una email fittizia — ricicla il biglietto da visita dell'esercizio 1
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Icone tab bar:
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Prodotti → 🛍️
+Preferiti → ⭐
+Profilo → 👤
