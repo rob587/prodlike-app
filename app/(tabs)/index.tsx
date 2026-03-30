@@ -1,30 +1,93 @@
 import prodotti from "@/data/prodotti";
 import { router } from "expo-router";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, View } from "react-native";
 
 export default function Index() {
   return (
-    <View className="flex-1 bg-white">
+    <View style={styles.contenitore}>
+      <Text style={styles.titoloPagina}>Catalogo</Text>
       <FlatList
         data={prodotti}
         keyExtractor={(item) => item.id}
+        contentContainerStyle={styles.lista}
         renderItem={({ item }) => (
           <Pressable
+            style={({ pressed }) => [
+              styles.card,
+              pressed && styles.cardPressed,
+            ]}
             className="flex-row items-center justify-between p-4 mb-3 rounded-xl bg-gray-100"
             onPress={() =>
               router.push(
-                `/dettaglio?id=${item.id}&nome=${item.nome}&prezzo=${item.prezzo}`,
+                `/dettaglio?id=${item.id}&nome=${item.nome}&prezzo=${item.prezzo}&categoria=${item.categoria}`,
               )
             }
           >
-            <Text className="text-lg font-bold">{item.nome}</Text>
-            <Text className="text-base text-indigo-600">{item.prezzo}</Text>
-            <Text className="text-sm text-gray-500">{item.categoria}</Text>
-            <Text></Text>
+            <View>
+              <Text style={styles.nome}>{item.nome}</Text>
+              <View style={styles.badgeCategoria}>
+                <Text style={styles.categoriaText}>{item.categoria}</Text>
+              </View>
+            </View>
+            <Text style={styles.prezzo}>{item.prezzo}</Text>
           </Pressable>
         )}
-      ></FlatList>
-      <Text>Edit app/index.tsx to edit this screen.</Text>
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  contenitore: {
+    flex: 1,
+    backgroundColor: "#f8f8f8",
+    paddingHorizontal: 16,
+    paddingTop: 60,
+  },
+  titoloPagina: {
+    fontSize: 32,
+    fontWeight: "700",
+    color: "#1a1a1a",
+    marginBottom: 20,
+  },
+  lista: {
+    gap: 12,
+    paddingBottom: 32,
+  },
+  card: {
+    backgroundColor: "#ffffff",
+    borderRadius: 16,
+    padding: 16,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderWidth: 0.5,
+    borderColor: "#e0e0e0",
+  },
+  cardPressed: {
+    opacity: 0.7,
+  },
+  nome: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: 6,
+  },
+  badgeCategoria: {
+    backgroundColor: "#eef2ff",
+    paddingHorizontal: 8,
+    paddingVertical: 3,
+    borderRadius: 6,
+    alignSelf: "flex-start",
+  },
+  categoriaText: {
+    fontSize: 12,
+    color: "#4f46e5",
+    fontWeight: "500",
+  },
+  prezzo: {
+    fontSize: 18,
+    fontWeight: "700",
+    color: "#4f46e5",
+  },
+});
